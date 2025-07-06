@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convertiseur devise</title>
+
+  <link rel="stylesheet" href="convertir.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1 id="T1">Convertisseur de devises</h1>
+
+    <input type="number" id="montant" placeholder=" Saisir le montant à convertir">
+    <select id="from">
+      <option>USD</option>
+      <option>EUR</option>
+      <option>DZD</option>
+      <option>GBP</option>
+      <option>JPY</option>
+    </select>
+
+
+    <select id="to">
+      <option>USD</option>
+      <option>EUR</option>
+      <option>DZD</option>
+      <option>GBP</option>
+      <option>JPY</option>
+    </select>
+
+    <button onclick="convertir()" id="convert"> Convertir </button>
+
+    <p id="resultat"> Résultat :</p>
+  </div>
+
+  <script>
+    function convertir() {
+      const montant = parseFloat(document.getElementById("montant").value);
+      const from = document.getElementById("from").value;
+      const to = document.getElementById("to").value;
+
+      let tauxDeChange;
+
+
+      if (from === "USD" && to === "EUR") {
+        tauxDeChange = 0.85;
+      } else if (from === "USD" && to === "DZD") {
+        tauxDeChange = 245;
+      } else if (from === "USD" && to === "GBP") {
+        tauxDeChange = 0.73;
+      } else if (from === "USD" && to === "JPY") {
+        tauxDeChange = 144;
+      } else if (from === "EUR" && to === "USD") {
+        tauxDeChange = 1.18;
+      } else if (from === "EUR" && to === "DZD") {
+        tauxDeChange = 260;
+      } else if (from === "EUR" && to === "GBP") {
+        tauxDeChange = 0.86;
+      } else if (from === "EUR" && to === "JPY") {
+        tauxDeChange = 170;
+      } else if (from === "DZD" && to === "USD") {
+        tauxDeChange = 0.0041;
+      } else if (from === "DZD" && to === "EUR") {
+        tauxDeChange = 0.0038;
+      } else if (from === "DZD" && to === "GBP") {
+        tauxDeChange = 0.0033;
+      } else if (from === "DZD" && to === "JPY") {
+        tauxDeChange = 1.11;
+      } else if (from === "GBP" && to === "EUR") {
+        tauxDeChange = 1.16;
+      } else if (from === "GBP" && to === "USD") {
+        tauxDeChange = 1.36;
+      } else if (from === "GBP" && to === "DZD") {
+        tauxDeChange = 305;
+      } else if (from === "GBP" && to === "JPY") {
+        tauxDeChange = 197;
+      } else if (from === "JPY" && to === "EUR") {
+        tauxDeChange = 0.006;
+      } else if (from === "JPY" && to === "USD") {
+        tauxDeChange = 0.007;
+      } else if (from === "JPY" && to === "DZD") {
+        tauxDeChange = 0.98;
+      } else if (from === "JPY" && to === "GBP") {
+        tauxDeChange = 0.0051;
+      } else {
+        tauxDeChange = 1;
+      }
+
+      if (montant <= 0 || montant === "") {
+        alert("Erreur :( , Veuiller saisir un nombre supérieur a zero !");
+        return;
+      }
+
+      const resultatF = montant * tauxDeChange;
+      resultat = resultatF;
+      document.getElementById("resultat").innerText = "Résultat : " + resultatF + "  " + to;
+    } 
+  </script>
+</body>
+
+</html>
